@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>HTML Accessibility Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+     <nav id="navbar">
+        <header class="navheader">HTML Accessibility Guide</header>
+        <a href="#introduction" class="nav-link"><span class="key">I</span>ntroduction</a>
+        <a href="#what_you_already_know" class="nav-link"><span class="key">W</span>hat you already know</a>
+        <a href="#make_a_page_for_all_devices" class="nav-link"><span class="key">M</span>ake a page for all devices</a>
+        <a href="#alternate_text" class="nav-link"><span class="key">A</span>lternate Text</a>
+        <a href="#aria_attributes" class="nav-link">A<span class="key">r</span>ia Attributes</a>
+        <a href="#access_keys" class="nav-link">A<span class="key">c</span>cess Keys</a>
+        <a href="#other_accessibility_tips" class="nav-link">O<span class="key">t</span>her Accessibility Tips</a>
+      </nav>
+    <main id="main-doc">
+      <a href="#introduction" accesskey="i"></a>
+      <a href="#what_you_already_know" accesskey="w"></a>
+      <a href="#make_a_page_for_all-devices" accesskey="m"></a>
+      <a href="#alternate_text" accesskey="a"></a>
+      <a href="#aria_attributes" accesskey="r"></a>
+      <a href="#access_keys" accesskey="c"></a>
+      <a href="#other_accessibility_tips" accesskey="o"></a>
+      <section class="main-section" id="introduction">
+        <header>Introduction</header>
+          <p>While most people only notice the website itself, a lot of thought actually goes into making websites accessible to everyone across all abilities and devices. There are many different ways to make a website accessible to everything, this page outlines a few ways to easily make it accessible to many people.</p>
+      </section>
+      <section class="main-section" id="what_you_already_know">
+        <header>What you already know</header>
+        <p>This guide assumes you already know...</p>
+        <ul>
+          <li>The basics of how websites and HTML files work.</li>
+          <li>How to create a webpage with HTML</li>
+          <li>How to style a webpage with CSS</li>
+      </section>
+      <section class="main-section" id="make_a_page_for_all_devices">
+        <header>Make a page for all devices</header>
+        <p>One easy way to ensure a website works across all devices is with the viewport and content attributes. This lets the website scale content across different device widths.</p>
+            <code>
+              &ltmeta name="viewport" content="width=device-width, initial-scale=1.0"&gt
+            </code>
+        <p>While this method does assist in making a page more accessible, there is a way to target certain display widths in CSS with the @media query, which can be editted to only apply to certain device widths or other methods of selecting devices.</p>
+            <code>
+              @media (prefers-reduced-motion: no-preference) 
+            </code>
+          <p>This specific query alters the webpage so that if a person has a preference for reduced scrolling, the website's scrolling behavior is altered to reflect their preference.</p>
+            <code>
+           @media (max-width: 768px)
+            </code>
+          <p>This query alters the logo width depending on the device width that the query reports from the device.
+          <p>There are a lot of devices to design widths for, luckily there is a handy guide to width specifications for a range of devices <a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/">here.</a></p>
+      </section>
+      <section class="main-section" id="alternate_text">
+        <header>Alternate Text</header>
+        <p>Alternate text helps people who may not otherwise be able to see an image, be able to know what its contents are. This can be helpful if the image does not load, or if the user cannot see it for any reason. I'll show an example down below.
+        <figure>
+          <img src="https://live.staticflickr.com/7085/7160485639_275957d000.jpg" alternate="A yellow duckling swimming in water.">
+          <figcaption>"Duckling" by Ben124. is licensed under CC BY 2.0.</figcaption>
+        </figure>
+        <p>The code for the image element seen above is here.</p>
+          <code>&ltimg src="https://live.staticflickr.com/7085/7160485639_275957d000.jpg" alternate="A yellow duckling swimming in water."&gt</code>
+        <p>The alternate text seen here is "A yellow duckling swimming in water." This text will be seen if the image has not loaded, cannot be loaded, or if the user is using a screen reader.
+      </section>
+      <section class="main-section" id="aria_attributes">
+        <header>ARIA Attributes</header>
+        <p>The ARIA role attribute is used to assign semantic meanings to HTML elements. This is used to guide screen readers or other assistive technologies to guide a user through a webpage. There are many different types, although some types have been replaced by in-built HTML technology, such as the the role "header" being replaced by &lth1-6>.</p>
+          <code>
+            &ltsection role="region" aria-labelledby="student-info"&gt
+          </code>
+        <p>This is an example of an ARIA role usage. The role of region  specifically is used to denote important areas of the document, and should include a more descriptive label detailing why the area of the document is important. The label here is student-info, which denotes that this "region" is for "student info", helping screen readers along.</p>
+        <p>More can be found about ARIA here on the <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">MDN Web Docs</a></p>
+      </section>
+      <section class="main-section" id="access_keys" accesskey="6">
+        <header>Access Keys</header>
+        <p>Access keys can be used by a document to provide key shortcuts across the website. They can be used to provide quicker navigation across a website, especially for those that cannot use a mouse.</p>
+        <code>
+          &ltsection name="main-section" id="access-keys"&gt accesskey="6"&gt
+        </code>
+        <p>This is an example used on this website on how to use an access key. The number 6 is a shortcut to this very section. All sections in this page are numbered, which makes it easier to understand where sections are.</p>
+        <p class="important">NOTE: BROWSERS OFTEN ADD "ALT" TO THE KEY COMBINATION FOR ACCESS KEYS. MAKE SURE YOU KNOW YOUR BROWSER'S COMBINATION</P>
+      </section>
+      <section class="main-section" id="other_accessibility_tips">
+        <header>Other Accessibility Tips</header>
+        <p>There are many other minor accessibility tips that you can use to make your website experience better for everyone.</p>
+        <ul>
+          <li>Make sure you make your website's UX design good. Make sure the text is readable.
+          <p><span class="wacky1">Don't make your websites look like this.</span></p>
+          <p><span class="wacky2">Or like this.</span></p>
+          <p><span class="wacky3">Much better.</span></p></li>
+          <li>The "for" attribute associates elements with elements. It can be used to have text link to another element, such as clicking the label of a checkbox filling in the checkbox.</li>
+          <li>Setting the whole website to a max-width of 100% in CSS will let images scale with the device width.</li>
+      </section>
+    </main>
+  </body>
+</html>
